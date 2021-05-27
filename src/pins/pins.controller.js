@@ -10,11 +10,23 @@ const create = async (req, res) => {
   res.status(201).json(pin);
 };
 
-const get = async (req, res) => {};
+const get = async (req, res) => {
+  const id = req.params.id; //se hace así cuando quieres usar un parámetro con un nombre determinado que has puesto en la ruta (en este caso id)
+  const pin = await pinModel.getId(id);
+  res.status(201).json(pin);
+};
 
-const update = async (req, res) => {};
+const update = async (req, res) => {
+  const id = req.params.id;
+  const pin = await pinModel.update(id,req.body);
+  res.status(201).json(pin);
+};
 
-const remove = async (req, res) => {};
+const remove = async (req, res) => {
+  const id = req.params.id;
+  await pinModel.deleteId(id);
+  res.status(201).json("Successfully deleted, execute get to check it")
+};
 
 module.exports = {
   all,

@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const path = require("path");
 const pins = require("./src/pins/pins.router");
+const users = require("./src/users/users.router");
 
 const mongoose = require("mongoose");
 
@@ -27,6 +28,7 @@ app.use(morgan("dev"));
 app.disable("x-powered-by Nuclio");
 
 app.use("/pins", pins);
+app.use("/users",users);
 
 const start = async () => {
   try {
