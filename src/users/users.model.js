@@ -20,12 +20,12 @@ const create = async (pin) => {
 };
 
 const getAll = async () => {
-    const users = await UserModel.find().populate('pins');
+    const users = await UserModel.find();
     return users;
 };
 
 const getId = async (id) => {
-    const user = await UserModel.findById(id).populate('pins');
+    const user = await UserModel.findById(id).populate('following');
     return user;
 }
 
